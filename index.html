@@ -15,14 +15,74 @@
       font-family: sans-serif;
       background-color: #ededed;
     }
+    .allbtns button
+{
+  font-size: 15px;
+  background-color: white;
+  color: teal;
+}
+.Detail
+{
+  font-size: 17px;
+  color: purple;
+  background-color: white;
+}
   </style>
   <title>my-card-v2</title>
 </head>
 
 <body>
+  <div class="allbtns">
+    <button class="duplicateBtn"> Duplicate Card</button>
+    <button class="changeBckgrnd"> Change Background </button>
+    <button class="ChangeTitle"> Change Title</button>
+    <button class="Delcrd"> Delete Card </button>
+  </div>
+  <button class="Detail">
+    Details</button>
   <my-card-v2></my-card-v2>
 
   <script type="module" src="./src/my-card-v2.js"></script>
 </body>
+
+<script>
+  document.querySelector('.Detail').addEventListener('click', function (e)
+  {
+    text = document.querySelector('my-card-v2').shadowRoot.querySelector('.descrip').innerText;
+    if(text.innerText === 'none' || text.innerText === '')
+    {
+      text.innerText = original;
+    }
+    else
+    {
+      text.innerText = '';
+    }
+    
+  })
+  document.querySelector('.duplicateBtn').addEventListener('click', function (e) 
+{
+ const dupCard = document.querySelector('my-card-v2').cloneNode();
+  document.body.appendChild(dupCard);
+});
+document.querySelector('.changeBckgrnd').addEventListener('click', function (e)  
+ {
+  const count = 0;
+  var bckColor = document.querySelector('my-card-v2').shadowRoot.querySelector('.wrap');
+  bckColor.style.backgroundColor = 'black';
+});
+document.querySelector('.ChangeTitle').addEventListener('click', function (e) 
+ {
+  document.querySelector('my-card-v2').shadowRoot.querySelector('h3').innerText = 'MARVEL CINEMATIC UNIVERSE';
+});
+document.querySelector('.Delcrd').addEventListener('click', (e) =>
+{
+  const allCrds = document.querySelectorAll("my-card-v2");
+  if(allCrds.length > 1)
+        {
+          const finalCard = allCrds[allCrds.length-1];
+          document.body.removeChild(finalCard);
+  }
+});
+</script>
 
 </html>
