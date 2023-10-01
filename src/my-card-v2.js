@@ -30,7 +30,10 @@ class MyCardV2 extends LitElement {
 }
 
   `;
-  
+  consturctor()
+  {
+    super();
+  }
 
   render() {
     return html`
