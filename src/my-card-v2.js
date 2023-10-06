@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 const MCU = new URL('../assets/MCU.jpeg', import.meta.url).href;
+import "@webdev0916/my-card-v2/my-card-v2.js";
 class MyCardV2 extends LitElement {
   static properties = {
     title:{type: String},
@@ -52,7 +53,7 @@ class MyCardV2 extends LitElement {
       <h3> ${this.title}</h3>
     </div>
     <img class="image" src="${MCU}">
-    <div class="descrip">
+    <div class="descrip"><slot></slot>
       <p>${this.descrip}</p>
       
     </div>
